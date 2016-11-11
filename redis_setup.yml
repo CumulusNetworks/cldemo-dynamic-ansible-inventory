@@ -20,3 +20,9 @@
       shell: nohup redis-server &
       when: copy_redis.changed
 
+    - name: Install redis python library
+      pip:
+        name: redis
+
+    - name: Populate Database
+      command: python build_database.py
