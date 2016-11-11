@@ -17,6 +17,6 @@
 
     - name: Start Redis
       become: no
-      command: redis-server &
+      shell: nohup redis-server &
       when: copy_redis.changed
 
