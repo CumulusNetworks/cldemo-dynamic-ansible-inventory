@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: Copy redis-server
+      copy:
+        src: roles/localhost/files/redis-server
+        dest: /usr/local/bin/redis-server
+      register: copy_redis
+
+    - name: Copy redis-cli
+      copy:
+        src: roles/localhost/files/redis-cli
+        dest: /usr/local/bin/redis-cli
+
+    - name: Start Redis
+      command: redis-server &
+      when: copy_redis.changed
+
