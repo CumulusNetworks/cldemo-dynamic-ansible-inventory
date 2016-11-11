@@ -6,14 +6,14 @@
       copy:
         src: roles/localhost/files/redis-server
         dest: /usr/local/bin/redis-server
-        mode: +x
+        mode: 0755
       register: copy_redis
 
     - name: Copy redis-cli
       copy:
         src: roles/localhost/files/redis-cli
         dest: /usr/local/bin/redis-cli
-        mode: +x
+        mode: 0755
 
     - name: Start Redis
       become: no
