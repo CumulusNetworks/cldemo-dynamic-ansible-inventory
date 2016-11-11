@@ -26,3 +26,4 @@
 
     - name: Populate Database
       command: python build_database.py
+      when: copy_redis.changed
