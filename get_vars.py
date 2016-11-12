@@ -10,13 +10,17 @@ conn = redis.Redis('localhost')
 def get_inventory():
     parser = argparse.ArgumentParser()
     parser.add_argument('--host', action='store')
-    parser.add_argument('--list', action='store')
+    parser.add_argument('--list', action='store_true')
+    parser.add_argument('-v', action='store_true')
     args = parser.parse_args()
 
     if args.host:
-        return json.loads(conn.get("inventory"))
+        return json.dumps(conn.get("inventory"))
     elif args.list:
-        return json.loads(conn.get("inventory"))
+        return_val = json.dumps(conn.get("inventory"))
+        if args.v:
+            print return_val
+        return return_val
     else:
         return {'_meta': {'hostvars': {}}}
 
