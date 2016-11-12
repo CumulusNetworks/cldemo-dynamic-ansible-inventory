@@ -6,15 +6,19 @@ import json
 
 conn = redis.Redis('localhost')
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--host', action='store')
-args = parser.parse_args()
 
-if args.host:
-    return json.loads(conn.get("inventory"))
-else:
-    return {'_meta': {'hostvars': {}}}
+def get_inventory():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--host', action='store')
+    args = parser.parse_args()
 
+    if args.host:
+        return json.loads(conn.get("inventory"))
+    else:
+        return {'_meta': {'hostvars': {}}}
+
+
+get_inventory()
 
 #redis_string = conn.get("leaf02")
 
