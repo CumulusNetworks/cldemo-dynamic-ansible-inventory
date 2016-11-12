@@ -12,9 +12,8 @@ def list(args, redis_connection):
     return return_val
 
 
-def host(args, redis_connection):
-
-    redis_output = json.loads(redis_connection.get("spine01"))
+def host(hostname, redis_connection):
+    redis_output = json.loads(redis_connection.get(hostname))
 
     return redis_output["settings"]
 
@@ -35,7 +34,7 @@ def main():
     redis_connection = redis.Redis('localhost')
 
     if args.host:
-        print host(args, redis_connection)
+        print host(args.host, redis_connection)
     if args.list:
         print list(args, redis_connection)
 
