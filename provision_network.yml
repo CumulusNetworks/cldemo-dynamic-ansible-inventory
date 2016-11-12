@@ -4,10 +4,12 @@
   vars:
      contents: "{{ lookup('redis_kv', 'redis://localhost:6379,'+ansible_hostname) }}"
   tasks:
-    - name: Copy /etc/network/interfaces
-      template:
-        src: roles/network/templates/interfaces.j2
-        dest: /etc/network/interfaces
+    - debug: var=hostvars[inventory_hostname]
+
+    # - name: Copy /etc/network/interfaces
+    #   template:
+    #     src: roles/network/templates/interfaces.j2
+    #     dest: /etc/network/interfaces
   #     notify: reload networking
 
   #   - name: Copy Quagga Configuration
