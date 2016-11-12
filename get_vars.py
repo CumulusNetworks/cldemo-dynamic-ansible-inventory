@@ -12,15 +12,20 @@ def get_inventory():
     parser.add_argument('--host', action='store')
     parser.add_argument('--list', action='store_true')
     parser.add_argument('-v', action='store_true')
+    parser.add_argument('-local', action='store')
     args = parser.parse_args()
 
     if args.host:
         return json.dumps(conn.get("inventory"))
     elif args.list:
-        return_val = json.dumps(conn.get("inventory"))
+        if not args.local:
+            return_val = json.loads(conn.get("inventory"))
+        else:
+            return_val = {"network": {"hosts": ["spine01", "leaf01"], "vars": {
+                "ansible_ssh_pass": "CumulusLinux!", "ansible_user": "cumulus", "ansible_become_pass": "CumulusLinux!"}}}
         if args.v:
-            print return_val
-        return return_val
+            print json.dumps(return_val)
+        return json.dumps(return_val)
     else:
         return {'_meta': {'hostvars': {}}}
 
