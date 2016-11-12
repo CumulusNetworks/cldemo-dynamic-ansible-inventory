@@ -9,13 +9,19 @@ def list_arg(args, redis_connection):
 
     return_val = json.loads(redis_connection.get("inventory"))
 
-    return return_val
+    # Needs to load then send back to json
+    # in order to normalize and make valid
+
+    return json.dumps(return_val)
 
 
 def host_arg(hostname, redis_connection):
     redis_output = json.loads(redis_connection.get(hostname))
 
-    return redis_output["settings"]
+    # Needs to load then send back to json
+    # in order to normalize and make valid
+
+    return json.dumps(redis_output["settings"])
 
 
 def parse_arguments():
