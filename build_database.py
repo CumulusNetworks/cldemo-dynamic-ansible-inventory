@@ -31,11 +31,11 @@ inventory = '{ \
 
 
 leaf01 = '{ \
-    "settings": {"ansible_user": "cumulus", "ansible_ssh_pass": "CumulusLinux!", "ansible_become_pass": "CumulusLinux!"} \
+    "settings": {"ansible_user": "cumulus", "ansible_ssh_pass": "CumulusLinux!", "ansible_become_pass": "CumulusLinux!"}, \
     "interfaces": {"lo": "10.1.1.1/32", "swp1": ""}, \
     "bgp": {"asn": "65412", "peers": ["swp1"]}}'
 spine01 = '{ \
-    "settings": {"ansible_user": "cumulus", "ansible_ssh_pass": "CumulusLinux!", "ansible_become_pass": "CumulusLinux!"} \
+    "settings": {"ansible_user": "cumulus", "ansible_ssh_pass": "CumulusLinux!", "ansible_become_pass": "CumulusLinux!"}, \
     "interfaces": {"lo": "10.2.2.2/32", "swp1": ""}, \
     "bgp": {"asn": "65413", "peers": ["swp1"]}}'
 
