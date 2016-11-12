@@ -1,0 +1,11 @@
+---
+- hosts: network
+  become: yes
+  roles:
+    - network_common
+  tasks:
+    - name: Copy /etc/network/interfaces
+      copy:
+        src: roles/network/templates/interfaces.j2
+        dest: /etc/network/interfaces
+
