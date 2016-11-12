@@ -12,7 +12,7 @@ def get_inventory():
     parser.add_argument('--host', action='store')
     parser.add_argument('--list', action='store_true')
     parser.add_argument('-v', action='store_true')
-    parser.add_argument('-local', action='store')
+    parser.add_argument('--local', action='store_true')
     args = parser.parse_args()
 
     if args.host:
