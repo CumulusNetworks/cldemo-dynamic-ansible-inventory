@@ -27,3 +27,8 @@
     - name: Populate Database
       command: python build_database.py
       when: copy_redis.changed
+
+    - name: Set get_vars to executable
+      file:
+        path: get_vars.py
+        mode: 0777
