@@ -3,7 +3,7 @@
   become: yes
   tasks:
     - name: Copy /etc/network/interfaces
-      copy:
+      template:
         src: roles/network/templates/interfaces.j2
         dest: /etc/network/interfaces
   #     notify: reload networking
