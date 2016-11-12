@@ -5,14 +5,14 @@ import argparse
 import json
 
 
-def list(args, redis_connection):
+def list_arg(args, redis_connection):
 
     return_val = json.loads(redis_connection.get("inventory"))
 
     return return_val
 
 
-def host(hostname, redis_connection):
+def host_arg(hostname, redis_connection):
     redis_output = json.loads(redis_connection.get(hostname))
 
     return redis_output["settings"]
@@ -34,9 +34,9 @@ def main():
     redis_connection = redis.Redis('localhost')
 
     if args.host:
-        print host(args.host, redis_connection)
+        print host_arg(args.host, redis_connection)
     if args.list:
-        print list(args, redis_connection)
+        print list_arg(args, redis_connection)
 
 
 if __name__ == "__main__":
