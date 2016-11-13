@@ -43,6 +43,8 @@ def main():
         print host_arg(args.host, redis_connection)
     if args.list:
         print list_arg(args, redis_connection)
+    else:
+        print host_arg("leaf01", redis_connection)
 
 
 if __name__ == "__main__":
