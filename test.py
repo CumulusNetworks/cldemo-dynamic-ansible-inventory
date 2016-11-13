@@ -21,7 +21,7 @@ def host_arg(hostname, redis_connection):
     # Needs to load then send back to json
     # in order to normalize and make valid
 
-    return json.dumps(redis_output["settings"])
+    return json.dumps(redis_output)
 
 
 def parse_arguments():
