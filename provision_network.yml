@@ -1,10 +1,9 @@
 ---
 - hosts: leaf01
   become: yes
-  # vars: "{{ lookup('redis_kv', 'redis://localhost:6379,'+ansible_hostname) }}"
+  vars:
+    contents: "{{ lookup('redis_kv', 'redis://localhost:6379,'+ansible_hostname) }}"
   tasks:
-    - include_vars: "{{ lookup('redis_kv', 'redis://localhost:6379,'+ansible_hostname) }}"
-
     - debug: var=hostvars[inventory_hostname]
 
     # - name: Copy /etc/network/interfaces
