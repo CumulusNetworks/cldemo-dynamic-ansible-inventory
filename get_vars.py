@@ -21,30 +21,23 @@ def host_arg(hostname, redis_connection):
     # Needs to load then send back to json
     # in order to normalize and make valid
 
-    return json.dumps(redis_output["settings"])
+    return json.dumps(redis_output)
 
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument('--host', action='store')
-    parser.add_argument('--list', action='store_true')
-    parser.add_argument('--local', action='store_true')
-    parser.add_argument('-v', action='store_true')
 
     return parser.parse_args()
 
 
 def main():
 
-    args = parse_arguments()
     redis_connection = redis.Redis('localhost')
+    args = parse_arguments()
 
     if args.host:
         print host_arg(args.host, redis_connection)
-    if args.list:
-        print list_arg(args, redis_connection)
-    else:
-        print host_arg("leaf01", redis_connection)
 
 
 if __name__ == "__main__":
