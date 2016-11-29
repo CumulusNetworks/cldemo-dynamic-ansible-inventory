@@ -1,27 +1,26 @@
 ---
-- hosts: leaf01
+- hosts: network
   become: yes
   tasks:
-    - debug: var=hostvars[inventory_hostname]
 
-    # - name: Copy /etc/network/interfaces
-    #   template:
-    #     src: roles/network/templates/interfaces.j2
-    #     dest: /etc/network/interfaces
-  #     notify: reload networking
+    - name: Copy /etc/network/interfaces
+      template:
+        src: roles/network/templates/interfaces.j2
+        dest: /etc/network/interfaces
+      notify: reload networking
 
-  #   - name: Copy Quagga Configuration
-  #     copy:
-  #       src: roles/network/files/Quagga.conf.j2
-  #       dest: /etc/quagga/Quagga.conf
-  #     notify: reload quagga
+    - name: Copy Quagga Configuration
+      copy:
+        src: roles/network/files/Quagga.conf.j2
+        dest: /etc/quagga/Quagga.conf
+      notify: reload quagga
 
-  #   - name: Copy Quagga daemons file
-  #     copy:
-  #       src: daemons
-  #       dest: /etc/quagga/daemons
-  #     notify: restart quagga
+    - name: Copy Quagga daemons file
+      copy:
+        src: daemons
+        dest: /etc/quagga/daemons
+      notify: restart quagga
 
-  # handlers:
-  #   - include: handlers/main.yml
-  #     static: yes
+  handlers:
+    - include: handlers/main.yml
+      static: yes
