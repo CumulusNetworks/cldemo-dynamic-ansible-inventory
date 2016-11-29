@@ -13,7 +13,7 @@
       template:
         src: roles/network/templates/Quagga.conf.j2
         dest: /etc/quagga/Quagga.conf
-      notify: reload quagga
+      notify: restart quagga
 
     - name: Copy Quagga daemons file
       copy:
