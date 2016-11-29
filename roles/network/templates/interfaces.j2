@@ -4,7 +4,7 @@ iface eth0 inet dhcp
 {% for interface, address in interfaces.iteritems() %}
 auto {{interface}}
 iface {{interface}}
-  {% if address is not none %}
+  {% if address is not "" %}
   address {{address}}
   {% endif %}
 
