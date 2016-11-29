@@ -16,12 +16,13 @@ def list_arg(redis_connection):
 
 
 def host_arg(hostname, redis_connection):
+    # Load the dataset. A SQL database would allow for a host specific query here
     redis_output = json.loads(list_arg(redis_connection))
 
+    # Parse the dataset to find the vars for that specific host
+    # In a SQL database we would take the query data and structure it into valid JSON
     host_vars = redis_output["_meta"]["hostvars"][hostname]
-    # Needs to load then send back to json
-    # in order to normalize and make valid
-    print host_vars
+
     return json.dumps(host_vars)
 
 
