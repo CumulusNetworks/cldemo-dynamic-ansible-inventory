@@ -1,8 +1,6 @@
 ---
 - hosts: leaf01
   become: yes
-  vars:
-    contents: "{{ lookup('redis_kv', 'redis://localhost:6379,'+ansible_hostname) }}"
   tasks:
     - debug: var=hostvars[inventory_hostname]
 
