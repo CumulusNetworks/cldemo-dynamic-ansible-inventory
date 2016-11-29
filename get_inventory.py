@@ -16,7 +16,7 @@ def list_arg(redis_connection):
 
 
 def host_arg(hostname, redis_connection):
-    redis_output = json.loads(list_arg())
+    redis_output = json.loads(list_arg(redis_connection))
 
     host_vars = redis_output["_meta"]["hostvars"][hostname]
     # Needs to load then send back to json
