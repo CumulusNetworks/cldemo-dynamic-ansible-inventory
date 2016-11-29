@@ -1,8 +1,10 @@
-
-auto lo
-iface lo inet loopback
-    address {{interfaces["lo"]}}
-
 auto eth0
 iface eth0 inet dhcp
 
+{% for interface,address in interfaces %}
+auto {{interface}}
+swp {{interface}}
+ {% if interface is "lo" %}
+  address {{address}}
+ {% endif %}
+{% endfor %}
