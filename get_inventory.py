@@ -7,8 +7,8 @@ import json
 
 def list_arg(redis_connection):
 
-    return_val = json.loads(redis_connection.get("inventory"))
-    print return_val
+    print redis_connection.get("inventory")
+    exit(1)
     # Needs to load then send back to json
     # in order to normalize and make valid
 
