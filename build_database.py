@@ -53,7 +53,7 @@ inventory = """
             "spine01": {
                 "interfaces": {"lo": "10.1.1.111/32", "swp1": "", "swp2": "", "swp3": "", "swp4": ""},
                 "bgp": {"asn": "65420", "peers": ["swp1", "swp2", "swp3", "swp4"]}
-            }
+            },
             "spine02": {
                 "interfaces": {"lo": "10.1.1.222/32", "swp1": "", "swp2": "", "swp3": "", "swp4": ""},
                 "bgp": {"asn": "65420", "peers": ["swp1", "swp2", "swp3", "swp4"]}
