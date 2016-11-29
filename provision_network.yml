@@ -17,7 +17,7 @@
 
     - name: Copy Quagga daemons file
       copy:
-        src: daemons
+        src: roles/network/files/daemons
         dest: /etc/quagga/daemons
       notify: restart quagga
 
