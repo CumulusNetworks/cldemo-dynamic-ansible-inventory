@@ -3,7 +3,7 @@ iface eth0 inet dhcp
 
 {% for interface, address in interfaces.iteritems() %}
 auto {{interface}}
-swp {{interface}}
+iface {{interface}}
   {% if address is not none %}
   address {{address}}
   {% endif %}
