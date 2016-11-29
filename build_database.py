@@ -36,19 +36,19 @@ inventory = """
         "hostvars": {
             "leaf01": {
                 "interfaces": {"lo": "10.1.1.1/32", "swp51": "", "swp52": ""},
-                "bgp": {"asn": "65421", "peers": ["swp1", "swp2"]}
+                "bgp": {"asn": "65421", "peers": ["swp51", "swp52"]}
             },
             "leaf02": {
                 "interfaces": {"lo": "10.1.1.2/32", "swp51": "", "swp52": ""},
-                "bgp": {"asn": "65422", "peers": ["swp1", "swp2"]}
+                "bgp": {"asn": "65422", "peers": ["swp51", "swp52"]}
             },
             "leaf03": {
                 "interfaces": {"lo": "10.1.1.3/32", "swp51": "", "swp52": ""},
-                "bgp": {"asn": "65423", "peers": ["swp1", "swp2"]}
+                "bgp": {"asn": "65423", "peers": ["swp51", "swp52"]}
             },
             "leaf04": {
                 "interfaces": {"lo": "10.1.1.4/32", "swp51": "", "swp52": ""},
-                "bgp": {"asn": "65424", "peers": ["swp1", "swp2"]}
+                "bgp": {"asn": "65424", "peers": ["swp51", "swp52"]}
             },
             "spine01": {
                 "interfaces": {"lo": "10.1.1.111/32", "swp1": "", "swp2": "", "swp3": "", "swp4": ""},
