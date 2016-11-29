@@ -5,7 +5,7 @@ import argparse
 import json
 
 
-def list_arg(args, redis_connection):
+def list_arg(redis_connection):
 
     return_val = json.loads(redis_connection.get("inventory"))
 
@@ -16,12 +16,13 @@ def list_arg(args, redis_connection):
 
 
 def host_arg(hostname, redis_connection):
-    redis_output = json.loads(redis_connection.get(hostname))
+    redis_output = json.loads(list_arg())
 
+    host_vars = redis_output["_meta"]["hostvars"][hostname]
     # Needs to load then send back to json
     # in order to normalize and make valid
-
-    return json.dumps(redis_output["settings"])
+    print host_vars
+    return json.dumps(host_vars)
 
 
 def parse_arguments():
@@ -39,7 +40,7 @@ def main():
     if args.host:
         print host_arg(args.host, redis_connection)
     if args.list:
-        print list_arg(args, redis_connection)
+        print list_arg(redis_connection)
 
 
 if __name__ == "__main__":
