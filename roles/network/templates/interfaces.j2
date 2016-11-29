@@ -2,6 +2,10 @@ auto eth0
 iface eth0 inet dhcp
 
 {% for interface, address in interfaces.iteritems() %}
-{{interface}}
-{{address}}
+auto {{interface}}
+swp {{interface}}
+  {% if address is defined %}
+  address {{address}}
+  {% endif %}
+
 {% endfor %}
