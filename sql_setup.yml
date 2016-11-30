@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: Install Sqlite
+      apt:
+        name: sqlite
+        state: present
+      register: install_sql
+
+    - name: Populate Database
+      command: python build_sql_database.py
+      when: install_sql.changed
