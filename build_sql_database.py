@@ -7,6 +7,19 @@ sqlite_file = "ansible_db.sqlite"
 db_connection = sqlite3.connect(sqlite_file)
 c = db_connection.cursor()
 
+# I will happily accept a PR that builds an actual database schema.
+# But until that happens, this demo is about pulling data out of a sql database
+# not about proper database schemas.
+#
+# The simple way I did this was that it's a single table.
+# The hostname is a key
+# BGP ASN is a string for json simplicity.
+# Every possible interface in the reference topology is included
+# swp1_bgp defines if it is a bgp unnumbered interface (0 or 1)
+# swp1_address defines the IP/mask that is used on the interface.
+# The default value for swp1_address is None. If the interface is
+# unnumbered or L2 then the value should be an empty string ""
+
 ansible_table_string = """
 hostname TEXT PRIMARY KEY,
 bgp_asn TEXT,
@@ -41,6 +54,8 @@ lo_address TEXT
 c.execute("CREATE TABLE ansible(" + ansible_table_string + ")")
 
 try:
+    # Syntax maps keywords to values.
+    # Notice ending values are empty strings '' representing unnumbered interfaces
     c.execute("INSERT INTO ansible (hostname, bgp_asn, lo_address, swp51_bgp, swp52_bgp, swp51_address, swp52_address) VALUES ('leaf01', '65421', '10.1.1.1/32', 1, 1, '', '')")
     c.execute("INSERT INTO ansible (hostname, bgp_asn, lo_address, swp51_bgp, swp52_bgp, swp51_address, swp52_address) VALUES ('leaf02', '65422', '10.1.1.2/32', 1, 1, '', '')")
     c.execute("INSERT INTO ansible (hostname, bgp_asn, lo_address, swp51_bgp, swp52_bgp, swp51_address, swp52_address) VALUES ('leaf03', '65423', '10.1.1.3/32', 1, 1, '', '')")
