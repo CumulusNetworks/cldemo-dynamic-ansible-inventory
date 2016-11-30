@@ -2,6 +2,9 @@
 - hosts: localhost
   become: yes
   tasks:
+
+    # Easier to copy the redis-server and cli binaries directly
+    # Instead of installing/building each demo run
     - name: Copy redis-server
       copy:
         src: roles/localhost/files/redis-server
@@ -24,6 +27,8 @@
       pip:
         name: redis
 
+    # This is the python script that will populate the redis database
+    # With the variables used in the network
     - name: Populate Database
       command: python build_database.py
       when: copy_redis.changed

@@ -1,4 +1,9 @@
 ---
+#####
+## This could be made more complicated
+## But for now, we only demonstrate L2 and L3 config
+#####
+
 - hosts: network
   become: yes
   tasks:

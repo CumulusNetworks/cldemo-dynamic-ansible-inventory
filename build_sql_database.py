@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+'''
+This script will connect to a SQLite database running on the local machine
+and will build a table and populate it with data that represents variables
+for the Cumulus reference topology.
+'''
+
 import sqlite3
 
 sqlite_file = "ansible_db.sqlite"
