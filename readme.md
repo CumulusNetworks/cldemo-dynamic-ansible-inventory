@@ -37,9 +37,9 @@ Once the ping is successful, you can configure the network with `ansible-playboo
 You can verify that the network was provisioned correctly with `ansible spine01 -a 'vtysh -c "show ip bgp sum"' -i get_redis_inventory.py --become`. 2 BGP peers should appear.
 
 ##Demo SQL
-First, install the SQLite database with `ansible-playbook sql_setup.yml`. This step will also populate the SQL database with the network variables. When the database is created, SQLite will create a file in the current directory called "ansible.sl".
+First, install the SQLite database with `ansible-playbook sql_setup.yml`. This step will also populate the SQL database with the network variables. When the database is created, SQLite will create a file in the current directory called "ansible_db.sqlite".
 
-*Note:* This demo will fail if ansible.sl is not in the same directory that the `ansible` commands are being executed from.
+*Note:* This demo will fail if ansible_db.sqlite is not in the same directory that the `ansible` commands are being executed from.
 
 Next, we can test a ping without a provided inventory file with `ansible all -m ping`.
 
