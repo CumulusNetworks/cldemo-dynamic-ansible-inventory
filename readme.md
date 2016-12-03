@@ -27,7 +27,7 @@ Once this repo has been cloned to the out of band management server you can buil
 
 Once either database is installed and populated with data (which is done as part of the install playbook),
 
-*Demo Redis*
+##Demo Redis
 First, install the redis database with `ansible-playbook redis_setup.yml`. This step will also populate the redis database with the network variables.
 Next, you can test without a provided inventory and see that Ansible fails. This command is `ansible all -m ping`
 To test by pulling the host information out of Redis use `ansible all -m ping -i get_redis_inventory.py`.
@@ -36,7 +36,7 @@ Once the ping is successful, you can configure the network with `ansible-playboo
 
 You can verify that the network was provisioned correctly with `ansible spine01 -a 'vtysh -c "show ip bgp sum"' -i get_redis_inventory.py --become`. 2 BGP peers should appear.
 
-*Demo SQL*
+##Demo SQL
 First, install the SQLite database with `ansible-playbook sql_setup.yml`. This step will also populate the SQL database with the network variables. When the database is created, SQLite will create a file in the current directory called "ansible.sl".
 
 *Note:* This demo will fail if ansible.sl is not in the same directory that the `ansible` commands are being executed from.
