@@ -31,7 +31,8 @@ Once either database is installed and populated with data (which is done as part
 First, install the redis database with `ansible-playbook redis_setup.yml`. This step will also populate the redis database with the network variables.
 Next, you can test without a provided inventory and see that Ansible fails. This command is `ansible all -m ping`
 To test by pulling the host information out of Redis use `ansible all -m ping -i get_redis_inventory.py`.
-Once the ping is successful, you can configure the network with `ansible-playbook provision_network -i get_redis_inventory.py`
+Once the ping is successful, you can configure the network with `ansible-playbook provision_network.yml -i get_redis_inventory.py`
+
 *Note:* If the Redis demo was previously run, please reset the lab with `ansible-playbook reset.yml -i get_sql_inventory.py`
 
 You can verify that the network was provisioned correctly with `ansible spine01 -a 'vtysh -c "show ip bgp sum"' -i get_redis_inventory.py --become`. 2 BGP peers should appear.
@@ -46,6 +47,7 @@ Next, we can test a ping without a provided inventory file with `ansible all -m 
 Now, providing an inventory, we can test the ping again using `ansible all -m ping -i get_sql_inventory.py`, which will work.
 
 Finally, the network can be configured with `ansible-playbook provision_network.yml -i get_sql_inventory.py`.
+
 *Note:* If the Redis demo was previously run, please reset the lab with `ansible-playbook reset.yml -i get_sql_inventory.py`
 
 You can verify that the network was provisioned correctly with `ansible spine01 -a 'vtysh -c "show ip bgp sum"' -i get_sql_inventory.py --become`. 2 BGP peers should appear.
