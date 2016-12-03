@@ -33,7 +33,7 @@ Next, you can test without a provided inventory and see that Ansible fails. This
 To test by pulling the host information out of Redis use `ansible all -m ping -i get_redis_inventory.py`.
 Once the ping is successful, you can configure the network with `ansible-playbook provision_network.yml -i get_redis_inventory.py`
 
-*Note:* If the Redis demo was previously run, please reset the lab with `ansible-playbook reset.yml -i get_sql_inventory.py`
+*Note:* If the Redis demo was previously run, please reset the lab with `ansible-playbook reset.yml -i get_redis_inventory.py`
 
 You can verify that the network was provisioned correctly with `ansible spine01 -a 'vtysh -c "show ip bgp sum"' -i get_redis_inventory.py --become`. 2 BGP peers should appear.
 
