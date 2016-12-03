@@ -30,5 +30,5 @@
     # This is the python script that will populate the redis database
     # With the variables used in the network
     - name: Populate Database
-      command: python build_database.py
+      command: python build_redis_database.py
       when: copy_redis.changed
