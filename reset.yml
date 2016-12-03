@@ -9,21 +9,15 @@
   tasks:
 
     - name: Copy /etc/network/interfaces
-      template:
-        src: roles/network/templates/interfaces.j2
+      copy:
+        src: roles/network/files/blank_file
         dest: /etc/network/interfaces
       notify: reload networking
 
     - name: Copy Quagga Configuration
-      template:
-        src: roles/network/templates/Quagga.conf.j2
-        dest: /etc/quagga/Quagga.conf
-      notify: restart quagga
-
-    - name: Copy Quagga daemons file
       copy:
-        src: roles/network/files/daemons
-        dest: /etc/quagga/daemons
+        src: roles/network/files/blank_file
+        dest: /etc/quagga/Quagga.conf
       notify: restart quagga
 
   handlers:

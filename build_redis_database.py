@@ -5,6 +5,10 @@ import redis
 conn = redis.Redis('localhost')
 
 '''
+This script will populate a redis database running on the local machine with
+data that represents the variables used to configure the Cumulus reference topology.
+
+
 The easiest way to manage the ansible info within redis
 is to turn the vars yaml file into a python dict.
 
@@ -63,4 +67,6 @@ inventory = """
     }
 }
 """
+
+# Place the big inventory string as the value for the key "inventory"
 conn.set("inventory", inventory)
