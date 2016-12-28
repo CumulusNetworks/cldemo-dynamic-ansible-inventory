@@ -15,7 +15,7 @@ Quickstart
 * vagrant up
 * vagrant ssh oob-mgmt-server
 * sudo su - cumulus
-* git clone https://github.com/plumbis/dynamic-ansible-inventory
+* git clone https://github.com/CumulusNetworks/cldemo-dynamic-ansible-inventory
 * cd cldemo-dynamic-ansible-inventory
 * ansible-playbook redis_setup.yml
 * ansible all -m ping -i get_redis_inventory.py
