@@ -1,3 +1,6 @@
+# DEPRECATED
+## This repo is no longer maintained.<br>For a list of current demos, please visit:<br>https://gitlab.com/cumulus-consulting/goldenturtle/<br><br><br>
+
 # cldemo-dynamic-ansible-inventory
 
 This demo shows how an external datasource can be used to populate all variable and host information at runtime.
